@@ -60,6 +60,7 @@ jobs:
                     database_version: ${{ matrix.mysql }}
                     php_version: ${{ matrix.php }}
                     symfony_version: ${{ matrix.symfony }}
+                    chrome_version: "1315742"
 
             -   name: Test installer
                 run: bin/console sylius:install --no-interaction -vvv
