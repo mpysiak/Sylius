@@ -174,7 +174,10 @@ final class ApiPlatformClient implements ApiClientInterface
             $uri = sprintf('%s/%s', $uri, $id);
         }
 
-        $response = $this->requestGet($uri);
+
+            $response = $this->requestGet($uri);
+            $content = $response->getContent();
+
 
         $this->request = $this->requestFactory->update(
             $this->section,
@@ -183,7 +186,7 @@ final class ApiPlatformClient implements ApiClientInterface
             $this->getToken(),
         );
 
-        $this->request->setContent(json_decode($response->getContent(), true));
+        $this->request->setContent(json_decode($content, true) ?? []);
 
         return $this;
     }
