@@ -44,7 +44,7 @@ jobs:
 
     static-checks:
         needs: get-matrix
-        runs-on: ubuntu-latest
+        runs-on: self-hosted
         name: "PHP ${{ matrix.php }}, Symfony ${{ matrix.symfony }}"
         strategy:
             fail-fast: false
