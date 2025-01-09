@@ -1005,17 +1005,19 @@ final readonly class ManagingCatalogPromotionsContext implements Context
         string $endDate,
     ): void {
         $response = $this->client->index(Resources::CATALOG_PROMOTIONS);
+        $startDate = new \DateTime($startDate);
+        $endDate = new \DateTime($endDate);
 
         Assert::true(
             $this->responseChecker->hasItemWithValues(
                 $response,
-                ['name' => $catalogPromotion->getName(), 'startDate' => $startDate . ':00', 'endDate' => $endDate . ':00'],
+                ['name' => $catalogPromotion->getName(), 'startDate' => $startDate->format('Y-m-d H:i:s'), 'endDate' => $endDate->format('Y-m-d H:i:s')],
             ),
             sprintf(
                 'Cannot find catalog promotions with name "%s" operating between "%s" and "%s" in the list',
                 $catalogPromotion->getName(),
-                $startDate,
-                $endDate,
+                $startDate->format('Y-m-d H:i:s'),
+                $endDate->format('Y-m-d H:i:s'),
             ),
         );
     }
