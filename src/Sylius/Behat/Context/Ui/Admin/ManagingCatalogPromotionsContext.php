@@ -911,8 +911,8 @@ final class ManagingCatalogPromotionsContext implements Context
         $this->indexPage->open();
         Assert::true($this->indexPage->isSingleResourceOnPage([
             'name' => $catalogPromotion->getName(),
-            'startDate' => (new \DateTime('yesterday'))->format('Y-m-d'),
-            'endDate' => (new \DateTime('tomorrow'))->format('Y-m-d'),
+            'startDate' => (new \DateTime('yesterday'))->format('d-m-Y'),
+            'endDate' => (new \DateTime('tomorrow'))->format('d-m-Y'),
         ]));
 
         $this->sharedStorage->set('catalog_promotion', $catalogPromotion);
